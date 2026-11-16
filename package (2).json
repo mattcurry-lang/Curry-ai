@@ -1,0 +1,21 @@
+{
+  "name": "curry-ai",
+  "private": true,
+  "version": "0.0.0",
+  "description": "Curry AI: an independent, agentic AI platform.",
+  "type": "module",
+  "engines": { "node": ">=22.18" },
+  "workspaces": ["packages/*", "apps/*"],
+  "scripts": {
+    "dev": "node --env-file=.env --watch apps/api/src/main.ts",
+    "start": "node apps/api/src/main.ts",
+    "typecheck": "tsc --noEmit",
+    "test": "node --test \"packages/**/*.test.ts\" \"apps/**/*.test.ts\" \"scripts/**/*.test.ts\"",
+    "check:secrets": "node scripts/check-secrets.ts",
+    "check": "npm run check:secrets && npm run typecheck && npm test"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "typescript": "^5.9.0"
+  }
+}
